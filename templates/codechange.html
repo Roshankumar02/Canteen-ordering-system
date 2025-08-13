@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Change Access Code</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    form {
+      background-color: #fff;
+      padding: 30px 40px;
+      border: 3px solid #333;
+      border-radius: 10px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      text-align: left;
+      min-width: 300px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 10px;
+      margin-bottom: 5px;
+      color: #444;
+    }
+
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #aaa;
+      border-radius: 5px;
+      margin-bottom: 15px;
+    }
+
+    input[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #388e3c;
+    }
+  </style>
+</head>
+<body>
+
+  <form method="post" action="/codechange">
+    <h2>Change Code</h2>
+    <label for="host">Main Password</label>
+    <input name="host" id="host" type="password" required>
+
+    <label for="subhost">Sub Password</label>
+    <input name="subhost" id="subhost" type="password" required>
+
+    <input type="submit" value="Update Code">
+  </form>
+
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Registration</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-image: url("{{ url_for('static', filename='images/register-bg.jpg') }}");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-attachment: fixed;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .reg {
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 30px 40px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      width: 100%;
+      max-width: 500px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #333;
+    }
+
+    table {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+
+    td {
+      padding: 10px;
+    }
+
+    label {
+      font-size: 16px;
+      font-weight: 600;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 12px;
+      font-size: 18px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background-color: #218838;
+    }
+
+    #result {
+      text-align: center;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .bottom-link {
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    .bottom-link a {
+      text-decoration: none;
+      color: #007BFF;
+    }
+
+    .bottom-link a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="reg">
+    <h1>Registration Form</h1>
+    <form method="post" action="/register" onsubmit="return check()">
+      <table>
+        <tr>
+          <td><label for="name">Name:</label></td>
+          <td><input id="name" name="name" type="text" placeholder="Enter Name" required></td>
+        </tr>
+        <tr>
+          <td><label for="username">Username:</label></td>
+          <td><input id="username" name="username" type="text" placeholder="Enter Username" required></td>
+        </tr>
+        <tr>
+          <td><label for="pass1">Password:</label></td>
+          <td><input id="pass1" name="pass1" type="password" placeholder="Enter Password" required></td>
+        </tr>
+        <tr>
+          <td><label for="pass2">Confirm Password:</label></td>
+          <td><input id="pass2" name="pass2" type="password" placeholder="Re-enter Password" required></td>
+        </tr>
+        <tr>
+          <td><label for="code">Code:</label></td>
+          <td><input id="code" name="code" type="password" placeholder="Enter Access Code" required></td>
+        </tr>
+      </table>
+      <p id="result"></p>
+      <input class="btn" type="submit" value="Sign Up" />
+    </form>
+    <div class="bottom-link">
+      <a href="/codechange">Change Code</a>
+    </div>
+  </div>
+
+  <script>
+    function check() {
+      const pass1 = document.getElementById("pass1").value;
+      const pass2 = document.getElementById("pass2").value;
+      const result = document.getElementById("result");
+
+      if (pass1 === pass2) {
+        result.textContent = "Passwords match!";
+        result.style.color = "green";
+        return true;
+      } else {
+        result.textContent = "Passwords do not match!";
+        result.style.color = "red";
+        return false;
+      }
+    }
+  </script>
+</body>
+</html>

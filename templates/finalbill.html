@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Final Bill</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      color: white;
+
+    }
+
+    body {
+      background-image: url("{{ url_for('static', filename='images/bill-bg.jpg') }}");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-attachment: fixed;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+    }
+
+    .inner {
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(10px);
+      border: 5px double red;
+      padding: 30px 40px;
+      border-radius: 12px;
+      max-width: 90%;
+    }
+
+    .inner h1, .inner h2, .inner h3 {
+      margin: 10px 0;
+    }
+
+    .bill-line {
+      text-align: left;
+      margin: 5px 0;
+      font-size: 18px;
+    }
+
+    hr {
+      height: 3px;
+      background-color: white;
+      border: none;
+      margin: 20px 0;
+    }
+
+    .note {
+      background-color: black;
+      font-size: 18px;
+      padding: 10px 20px;
+      margin-top: 20px;
+      border-radius: 5px;
+      max-width: 80%;
+    }
+
+    form {
+      margin-top: 20px;
+    }
+
+    input[type="submit"] {
+      padding: 10px 25px;
+      font-size: 18px;
+      background-color: white;
+      color: black;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #ddd;
+    }
+
+    @media screen and (max-width: 600px) {
+      .inner {
+        padding: 20px;
+      }
+
+      .bill-line {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="inner">
+    <h1>Name: {{ username }}</h1>
+    <h1>Order No: {{ order_no }}</h1>
+    <h1>Date: {{ Date }}</h1>
+    
+    <hr>
+
+    <h2 style="text-align: left;">Orders:</h2>
+    {% for i in range(a) %}
+      <div class="bill-line">
+        {{ items[i] }} &times; {{ quantity[i] }} @ ₹{{ price[i] }} = ₹{{ price[i] * quantity[i] }}
+      </div>
+    {% endfor %}
+
+    <hr>
+
+    <h2>Total Amount: ₹{{ sum }}</h2>
+  </div>
+
+  <p class="note"><strong>Take a screenshot of this bill and show it at the canteen counter to collect your order.</strong></p>
+
+  <form method="post" action="/finalbill">
+    <input type="submit" value="Back to Menu">
+  </form>
+
+</body>
+</html>

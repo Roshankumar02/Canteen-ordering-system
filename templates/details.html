@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Order Details</title>
+  <style>
+    body {
+      background: linear-gradient(to right, #e0f7fa, #ffffff);
+      margin: 0;
+      padding: 30px;
+    }
+
+    h1 {
+      text-align: center;
+      text-decoration: underline;
+      color: #333;
+      margin-bottom: 30px;
+    }
+
+    .table-container {
+      overflow-x: auto;
+      background-color: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(10px);
+      border-radius: 8px;
+      padding: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 18px;
+      min-width: 1000px;
+    }
+
+    th, td {
+      border: 1px solid #888;
+      padding: 10px 15px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #1976d2;
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    tr:hover {
+      background-color: #e1f5fe;
+    }
+
+    td {
+      color: #333;
+    }
+
+    @media screen and (max-width: 768px) {
+      table {
+        font-size: 14px;
+      }
+
+      th, td {
+        padding: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Details about Orders</h1>
+
+  <div class="table-container">
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Idli</th>
+        <th>Dosa</th>
+        <th>Poori</th>
+        <th>Samosa</th>
+        <th>Puff</th>
+        <th>Coke</th>
+        <th>Biscuit</th>
+        <th>Meals</th>
+        <th>Variety Rice</th>
+        <th>Ordered Time</th>
+      </tr>
+      {% for item in items %}
+      <tr>
+        <td>{{ item.name }}</td>
+        <td>{{ item.idli }}</td>
+        <td>{{ item.dosa }}</td>
+        <td>{{ item.poori }}</td>
+        <td>{{ item.samosa }}</td>
+        <td>{{ item.puff }}</td>
+        <td>{{ item.coke }}</td>
+        <td>{{ item.biscuit }}</td>
+        <td>{{ item.meals }}</td>
+        <td>{{ item.variety_rice }}</td>
+        <td>{{ item.order_time }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+
+</body>
+</html>
