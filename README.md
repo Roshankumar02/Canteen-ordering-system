@@ -13,4 +13,4 @@ A Flask + MongoDB web app for canteen ordering with real-time stock tracking, ow
 - **Backend:** Flask
 - **Database:** MongoDB
 - **Scheduling:** APScheduler
-- **Frontend:** HTML, CSS, Bootstrap
+- **Frontend:** HTML, CSS, JS
